@@ -34,9 +34,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		while (next == current) {
 			AESysFrameStart();
 			AEInputUpdate();
+			gameTime += AEFrameRateControllerGetFrameTime();
 			fpUpdate();
 			fpDraw();
-
 			AESysFrameEnd();
 		}
 

@@ -5,10 +5,12 @@
 
 namespace GSM {
 	int current, previous, next;
+	f64 gameTime;
 	FP fpLoad = nullptr, fpInit = nullptr, fpUpdate = nullptr, fpDraw = nullptr, fpFree = nullptr, fpUnload = nullptr;
 
 	void GSM_Init(int start) {
 		current = previous = next = start;
+		gameTime = 0.f;
 	}
 
 	void GSM_Update() {

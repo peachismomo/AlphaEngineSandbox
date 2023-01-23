@@ -29,7 +29,7 @@ namespace Level1 {
 			-1.0f, 1.0f, 0xFFFF0000, 0.0f, 0.0f
 		);
 		player.obj.pMesh = AEGfxMeshEnd();
-		player.direction = Vector{ 0,0 }, player.speed = 100.0f;
+		player.direction = AEVec2{ 0.f,0.f }, player.speed = 100.0f;
 		player.spriteX = 11, player.spriteY = 8, player.spriteIteration = 0;
 		player.pTexOffsetX = 0, player.pTexOffsetY = 0;
 		player.state = 0;
@@ -39,13 +39,13 @@ namespace Level1 {
 		if (AEInputCheckTriggered(AEVK_ESCAPE))
 			next = Enum::GS_QUIT;
 
-		bool isMoving{ playerMovement(player) };
+		player.state = playerMovement(player);
 		/*UPDATE LOGIC*/
-		if (isMoving) {
-			player.state = 1;
+		if (player.state) {
 			f32 unitSpeed = player.speed * static_cast<f32>(AEFrameRateControllerGetFrameTime());
-			player.direction = vecNormalize(player.direction);
-			player.obj.pos = vecAdd(player.obj.pos, vecScale(player.direction, unitSpeed));
+			AEVec2Normalize(&player.direction,&player.direction);
+			AEVec2Scale(&player.direction, &player.direction, unitSpeed);
+			AEVec2Add(&player.obj.pos, &player.obj.pos, &player.direction);
 		}
 		else {
 			player.state = 0;

@@ -1,4 +1,5 @@
 #include "helper.h"
+#include "GSM.h"
 
 namespace helper {
 	void RenderObject(Character &character) {
@@ -38,8 +39,8 @@ namespace helper {
 	}
 
 	bool direction(Character character, int a, int b) {
-		int x = round(character.direction.x);
-		int y = round(character.direction.y);
+		int x = static_cast<int>(character.direction.x);
+		int y = static_cast<int>(character.direction.y);
 		return (x == a && y == b);
 	}
 
@@ -72,11 +73,12 @@ namespace helper {
 
 	void setTextureOffsetX(Character& character) {
 		if (character.state) {
-			if (!(AEFrameRateControllerGetFrameCount() % 6)) {
+			if (GSM::gameTime >= 0.1f) {
 				character.spriteIteration++;
 				character.spriteIteration %= (character.spriteX - 1);
+				GSM::gameTime = 0.f;
 			}
-			character.pTexOffsetX = character.spriteIteration;
+			character.pTexOffsetX = character.spriteIteration + 1;
 		}
 		else {
 			character.pTexOffsetX = 0;
@@ -84,7 +86,7 @@ namespace helper {
 	}
 
 	bool playerMovement(Character& player) {
-		Vector dir = Vector{ 0,0 };
+		AEVec2 dir = AEVec2{ 0.f,0.f };
 		if (AEInputCheckCurr(AEVK_A)) {
 			dir.x--;
 		}
