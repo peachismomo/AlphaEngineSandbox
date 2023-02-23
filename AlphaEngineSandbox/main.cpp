@@ -17,7 +17,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	/*INITIALIZATIONS*/
 	SystemHandler::System_Initialize(hInstance, nCmdShow);
-	GSM_Init(Enum::GS_LEVEL1);
+	GSM_Init(Enum::GS_LEVEL2);
 
 	/*GAME LOOP*/
 	while (current != GS_QUIT) {

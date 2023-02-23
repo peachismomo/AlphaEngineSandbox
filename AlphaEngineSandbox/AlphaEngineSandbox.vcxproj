@@ -96,18 +96,24 @@ xcopy "$(SolutionDir)Extern\AlphaEngine_V3.08\lib\Alpha_Engine.dll" "$(OutDir)" 
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GSM.cpp" />
     <ClCompile Include="helper.cpp" />
     <ClCompile Include="Level1.cpp" />
+    <ClCompile Include="Level2.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SystemHandler.cpp" />
+    <ClCompile Include="vertices.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enum.h" />
     <ClInclude Include="GSM.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="helper.h" />
     <ClInclude Include="Level1.h" />
+    <ClInclude Include="Level2.h" />
     <ClInclude Include="SystemHandler.h" />
+    <ClInclude Include="vertices.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

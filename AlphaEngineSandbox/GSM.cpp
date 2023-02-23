@@ -1,6 +1,7 @@
 #include "GSM.h"
 #include "Enum.h"
 #include "Level1.h"
+#include "Level2.h"
 #include "AEEngine.h"
 
 namespace GSM {
@@ -25,6 +26,14 @@ namespace GSM {
 			fpDraw = Level1::Level1_Draw;
 			fpFree = Level1::Level1_Free;
 			fpUnload = Level1::Level1_Unload;
+			break;
+		case GS_LEVEL2:
+			fpLoad = Level2::Level2_Load;
+			fpInit = Level2::Level2_Init;
+			fpUpdate = Level2::Level2_Update;
+			fpDraw = Level2::Level2_Draw;
+			fpFree = Level2::Level2_Free;
+			fpUnload = Level2::Level2_Unload;
 			break;
 		case GS_RESTART:
 			break;
